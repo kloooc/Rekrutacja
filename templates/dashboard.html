@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link href="/static/style.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+        <p>Witaj, <strong>{{ user_data.name }}</strong>! Ten widok jest dostępny tylko po zalogowaniu.</p>
+
+        <h2>Dane Użytkownika:</h2>
+            <strong>Email:</strong> <code>{{ user_data.email }}</code>
+            <strong>Sub (ID):</strong> <code>{{ user_data.sub }}</code>
+
+        <h2>Access Token:</h2>
+            <textarea readonly>{{ access_token }}</textarea>
+
+        <h2>Instrukcje Testu API</h2>
+            <p>Wywołaj żądanie <code>GET</code> na <code>http://127.0.0.1:5000/api/profile</code> używając narzędzia Postman, dodając nagłówek:</p>
+            <p><code>Authorization: Bearer [skopiowany Access Token]</code></p>
+
+        <div class="button-group">
+            <a href="/" class="home">Powrót do Strony Głównej</a>
+            <a href="/logout" class="logout">Wyloguj się</a>
+        </div>
+
+    </div>
+</body>
+</html>

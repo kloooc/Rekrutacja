@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Strona Główna</title>
+    <link href="/static/style.css" rel="stylesheet">
+</head>
+<body>
+    {% if is_logged_in %}
+        <h1>Witaj w Aplikacji</h1>
+        <p>Jesteś zalogowany. Wybierz akcję:</p>
+        
+        <a href="/dashboard" class="dashboard">Przejdź do Dashboardu</a>
+        <a href="/logout" class="logout">Wyloguj się</a>
+        
+        {% if is_admin %}
+            <p style="margin-top: 20px;">Jesteś zalogowany jako admin:</p>
+        {% endif %}
+
+    {% else %}
+        <h1>Witaj w Aplikacji</h1>
+        <p>Aby kontynuować, musisz się zalogować.</p>
+        <a href="/login" class="login">Zaloguj się z Auth0</a>
+    {% endif %}
+</body>
+</html>
