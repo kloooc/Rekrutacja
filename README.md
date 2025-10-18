@@ -112,7 +112,6 @@ Proces obejmuje:
    - sygnatury,  
    - pól `aud`, `iss`, `exp`.
 
-Zapewnia to **solidną ochronę zasobów API** zgodnie z najlepszymi praktykami bezpieczeństwa.
 
 ---
 
