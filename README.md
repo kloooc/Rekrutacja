@@ -94,24 +94,5 @@ Aplikacja wykorzystuje Authorization Code Grant Flow dla interaktywnego logowani
 
 ---
 
-### Bezpieczeństwo sesji i tokenów
-
-#### Sesja
-Stan uwierzytelnienia po stronie serwera (Flask) jest utrzymywany przy użyciu zaszyfrowanych **cookies sesyjnych**.  
-Dzięki temu widoki takie jak `/dashboard` są chronione.
-
-#### Weryfikacja JWT
-Dla ochrony endpointu **/api/profile** zaimplementowano walidację tokena JWT, z pomocą `PyJWT`.  
-Proces obejmuje:
-
-1. Weryfikację nagłówka (`Bearer token`)  
-2. Pobranie kluczy publicznych Auth0 (JWKS) w czasie rzeczywistym  
-3. Dopasowanie `kid` do właściwego klucza publicznego  
-4. Dekodowanie tokena z weryfikacją:
-   - sygnatury,  
-   - pól `aud`, `iss`, `exp`.
-
-
----
 
 *Damian Kloch*  
