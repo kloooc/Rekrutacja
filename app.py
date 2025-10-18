@@ -39,10 +39,10 @@ def requires_api_auth(view):
                 (
                     {
                         "kty": key["kty"],
-                        "kid": key["kid"],
                         "use": key["use"],
                         "n": key["n"],
                         "e": key["e"],
+                        "kid": key["kid"],
                     }
                     for key in jwks["keys"]
                     if key["kid"] == unverified_header["kid"]
@@ -72,7 +72,7 @@ def requires_api_auth(view):
 def home():
     is_logged_in = 'profile' in session
     user_name = session['profile']['name'] if is_logged_in else None
-    is_admin = session.get('is_admin', False) if is_logged_in else False # Pobranie is_admin z sesji
+    is_admin = session.get('is_admin', False) if is_logged_in else False
     return render_template('index.html', is_logged_in=is_logged_in, user_name=user_name, is_admin=is_admin)
 
 @app.route("/login")
@@ -86,6 +86,7 @@ def login():
     }
     return redirect(f"https://{AUTH0_DOMAIN}/authorize?{urlencode(params)}")
 
+@requires_api_auth
 @app.route("/callback")
 def callback():
     data = {
