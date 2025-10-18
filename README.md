@@ -16,7 +16,6 @@ To rozwiązanie stanowi prostą aplikację webową (**Frontend + Backend w jedne
 ### 1. Wymagania wstępne
 
 - Python 3.6+  
-- Wirtualne środowisko (**zalecane**)  
 - Konto **Auth0** z utworzoną aplikacją (typ: *Regular Web Application*) i API  
 
 ---
@@ -32,7 +31,7 @@ pip install -r requirements.txt
 ```
 ---
 ### 3. Konfiguracja Auth0
-W repozytorium znajduje się przykładowy plik .env.example, który można wykorzystać lub
+W repozytorium znajduje się przykładowy plik .env.example, który można wykorzystać, zmieniając nazwę na .env lub
 
 Utwórz plik .env w katalogu głównym projektu z następującymi zmiennymi:
 ```bash
@@ -73,11 +72,11 @@ Aby przetestować logowanie jako administrator:
 
 ---
 
-## Krótki opis architektoniczny
+## Opis architektoniczny
 
 ### Wybór technologii (Flask)
 
-Wybrano **Flask (Python)** ze względu na:
+Wybrano **Flask** ze względu na:
 - szybkość prototypowania,  
 - możliwość połączenia frontendu i backendu w jednej aplikacji,  
 - doświadczenie.
@@ -86,7 +85,7 @@ Wybrano **Flask (Python)** ze względu na:
 
 ### Architektura uwierzytelniania
 
-Aplikacja wykorzystuje **Authorization Code Grant Flow** dla interaktywnego logowania:
+Aplikacja wykorzystuje Authorization Code Grant Flow dla interaktywnego logowania:
 
 1. Klient (przeglądarka) → `/login`  
 2. Flask → przekierowanie do Auth0 `/authorize`  
@@ -102,7 +101,7 @@ Stan uwierzytelnienia po stronie serwera (Flask) jest utrzymywany przy użyciu z
 Dzięki temu widoki takie jak `/dashboard` są chronione.
 
 #### Weryfikacja JWT
-Dla ochrony endpointu **/api/profile** zaimplementowano walidację tokena JWT **bez użycia gotowych SDK**, jedynie z pomocą `PyJWT`.  
+Dla ochrony endpointu **/api/profile** zaimplementowano walidację tokena JWT, z pomocą `PyJWT`.  
 Proces obejmuje:
 
 1. Weryfikację nagłówka (`Bearer token`)  
