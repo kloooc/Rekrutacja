@@ -70,9 +70,9 @@ def requires_api_auth(view):
 
 @app.route("/")
 def home():
-    is_logged_in = 'profile' in session
-    user_name = session['profile']['name'] if is_logged_in else None
-    is_admin = session.get('is_admin', False) if is_logged_in else False
+    user_name = session.get('profile', {}).get('name')
+    is_logged_in = user_name is not None
+    is_admin = session.get('is_admin', False)
     return render_template('index.html', is_logged_in=is_logged_in, user_name=user_name, is_admin=is_admin)
 
 @app.route("/login")
